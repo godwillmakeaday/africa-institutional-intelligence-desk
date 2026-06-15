@@ -212,7 +212,7 @@ export default function Home() {
                 built for a world that is already indexed.
               </p>
               <p>
-                Africa Institutional Intelligence Desk focuses on a different layer: the
+                Africa Record Desk focuses on a different layer: the
                 under-indexed institutional realities that shape law, commerce, land,
                 governance, procurement, regulation, trade, and public risk across African
                 markets. The opportunity is not to copy Global North data platforms, but to

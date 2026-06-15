@@ -1,99 +1,80 @@
-# Africa Institutional Intelligence Desk
+# Africa Record Desk
 
-**Where African public information becomes professional intelligence.**
+**A source-mapped institutional signals platform.**
 
-An institutional intelligence platform that organizes scattered public information —
-laws, gazettes, regulations, court signals, procurement notices, policy shifts, land
-notices, trade corridors, and public-sector decisions — into structured intelligence
-for lawyers, investors, journalists, NGOs, businesses, researchers, and policy actors.
+Africa Record Desk organizes public-facing records, notices, gazettes, regulatory
+updates, procurement signals, land notices, court-adjacent information, and policy
+movements into structured briefs. Nigeria-first, with the continent on the roadmap.
 
-Nigeria-first, Africa-ready. Built for the under-indexed institutional realities of the
-Global South.
+> **We do not claim ownership over public information.** Public documents, official
+> notices, gazettes, court lists, regulations, and government publications remain the
+> property of their original public authorities or lawful publishers. The platform's
+> value is classification, source mapping, jurisdiction mapping, risk labelling,
+> summaries, alerts, and professional briefings.
 
-> **Demonstration build.** All intelligence in this version is clearly labelled
-> **Sample / Demonstration Data**. It is illustrative only — not real, current, or
-> verified information — and must not be relied upon. Replace `src/data/intelligenceItems.js`
-> with a verified data source before production use.
+> **Demonstration build.** All records shown are sample / demonstration records, driven
+> by the `DEMO_MODE` flag in `src/config.js`. Set `DEMO_MODE = false` to remove all
+> demonstration labelling in one place at launch.
 
 ---
 
 ## Stack
 
-- **Vite** + **React 18** (SPA, no backend required for v1)
-- **React Router** for page routing
-- **Tailwind CSS** for styling
-- Local mock data in `src/data/intelligenceItems.js`
+- **Vite** + **React 18** with **React Router**
+- **Tailwind CSS**
+- Local data in `src/data/intelligenceItems.js`
+- **Build-time prerendering** for indexability (see below)
 
-## Run locally
+## Run & build
 
 ```bash
 npm install
-npm run dev      # start the dev server
-npm run build    # production build to /dist
-npm run preview  # preview the production build
+npm run dev          # dev server
+npm run build        # client build + SSR build + prerender (full, indexable output)
+npm run build:client # client-only build (no prerender), if needed
+npm run preview      # preview the built site
 ```
 
-## Deploy to Vercel
+## Indexability (server-rendered pages, JSON-LD, sitemap)
 
-This is a static SPA and deploys to Vercel with no configuration:
+`npm run build` runs three steps: a client build, an SSR build (`src/entry-server.jsx`),
+and `scripts/prerender.mjs`. The prerender renders **every route — and every
+`/brief/<ref>` record — to its own static HTML file** under `dist/`, each with a
+route-specific `<title>`, description, canonical, and OpenGraph/Twitter tags. Brief pages
+also carry **JSON-LD (`Report` schema)** built from the record fields (jurisdiction,
+source type, ref, filed date, sectors, risk, status, verification). A **`sitemap.xml`** is
+generated for all routes.
 
-1. Push the project to a Git repository.
-2. Import it in Vercel.
-3. Framework preset: **Vite**. Build command: `npm run build`. Output: `dist`.
+- The desk/list shell is server-rendered too (cards are present in the static HTML).
+- The client **hydrates** the prerendered markup.
+- Set your production domain in `SITE_URL` (`src/config.js`) so canonical URLs, OG, and the
+  sitemap are correct. `public/robots.txt` points at the sitemap.
 
-`vercel.json` already includes the SPA rewrite so client-side routes (e.g. `/brief/...`)
-resolve correctly on refresh and deep links.
+Deploy to **Vercel**: framework preset **Vite**, build `npm run build`, output `dist`.
+`vercel.json` serves the prerendered static files first and falls back to the SPA for any
+unmatched path.
 
-## Project structure
+## Brand & config
 
-```
-src/
-  data/intelligenceItems.js   # mock data + taxonomies (single source of truth)
-  components/                 # Header, Footer, Hero, IntelligenceCard, RiskBadge,
-                              # CategoryBadge, FilterPanel, PackageCard, MethodologyStep,
-                              # SourceLibraryCard, ContactForm, ClassificationStrip, ...
-  pages/                      # Home, Dashboard, NigeriaDesk, AccessModel, Library,
-                              # Methodology, BriefingDesk, BriefDetail, About, Contact,
-                              # NotFound
-```
+All brand strings and flags live in `src/config.js` (`BRAND`, `DEMO_MODE`, `DEMO_NOTICE`,
+`SITE_URL`, `COVERAGE`). The monogram is `ARD` (tight fallback `RD`), rendered as a stamp
+via `src/components/Seal.jsx`. Record references use the `ARD-` prefix.
 
-## Nigeria-first, Africa-ready
+## Records & vocabularies
 
-The platform leads with a **Nigeria Desk** (`/nigeria`) — a *monitoring framework* of ten
-intelligence areas (Federal Regulation Watch, State Government Tracker, Court & Litigation
-Signals, CAC & Corporate Registry Signals, Procurement & Public Finance Watch, Land &
-Property Notice Desk, Tax & Revenue Monitor, Customs & Trade Corridor Watch, Election &
-Political Risk Monitor, Security & Governance Signals) with a **Nigerian-state filter** and
-state-level demonstration briefs for Lagos, Abuja (FCT), Nasarawa, Kano, Rivers, Kaduna,
-Plateau, and Ogun.
+Each record supports: sector(s), risk level, jurisdiction, source type, reference number,
+filed date, why it matters, affected sectors, **status**, **verification status**, and an
+open-brief link. The two status fields use fixed, distinct vocabularies:
 
-These are a **sample intelligence structure**: the framework is defined and the briefs are
-**demonstration briefs**, clearly labelled sample data. The desk does not claim live data —
-each area's **data source is to be connected**. The taxonomy and methodology are built to
-extend across African markets without redesign. Nigerian states are defined in
-`NIGERIA_STATES` and the areas in `nigeriaDeskAreas` in `src/data/intelligenceItems.js`.
+- **Status** (event lifecycle): `Developing` / `Active` / `Closed`
+- **Verification** (trust in the record): `Verified` / `Source-confirmed` / `Unverified`
 
-## Design system
+On mobile, cards show primary fields (category, risk, title, brief, why it matters) and
+collapse the rest ("Record details"); jurisdiction always wraps and is never truncated.
 
-- **Palette** — deep navy `#0B1A2A`, navy `#12283D`, off-white parchment `#F2EEE4`,
-  muted gold `#B38B45`. Risk colours are reserved exclusively for the risk system.
-- **Type** — Spectral (display serif), IBM Plex Sans (body/UI), IBM Plex Mono (data
-  labels and the classification strip).
-- **Signature** — the monospace *classification strip* (`Jurisdiction · Source · Ref ·
-  Filed`) that appears on every card and brief header, encoding real metadata like a
-  classified dossier.
+## Pages
 
-## Replacing the sample data
-
-Each intelligence item follows this shape:
-
-```js
-{
-  id, title, slug, category, country, region, jurisdiction, sourceType,
-  date, riskLevel, status, summary, whyItMatters, affectedSectors,
-  recommendedAction, sourceNote, confidenceLevel, tags, isSampleData
-}
-```
-
-Keep `slug` unique — it is the route key for `/brief/:slug`. Set `isSampleData: false`
-only for verified, real records, and remove the demonstration ribbon/labels accordingly.
+Home, Records desk (`/dashboard`), Nigeria Desk (`/nigeria`), Free Open Library
+(`/library`), Methodology (`/methodology`), Briefings (`/briefing-desk`), Alerts
+(`/alerts`), Access & business model (`/access-model`), Brief detail (`/brief/:ref`),
+About, Contact.

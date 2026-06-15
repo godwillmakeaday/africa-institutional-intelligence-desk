@@ -1,10 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { hydrateRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+// The HTML is server-rendered at build time, so we hydrate rather than render.
+hydrateRoot(
+  document.getElementById("root"),
   <React.StrictMode>
     <BrowserRouter>
       <App />

@@ -31,6 +31,7 @@ const FIELD_LABELS = {
   sector: "Sector",
   source: "Source",
   status: "Status",
+  verification: "Verification",
 };
 
 export default function FilterPanel({
@@ -40,7 +41,7 @@ export default function FilterPanel({
   taxonomies,
   resultCount,
 }) {
-  const { categories, countries, states, regions, risks, sectors, sources, statuses } =
+  const { categories, countries, states, regions, risks, sectors, sources, statuses, verifications } =
     taxonomies;
 
   const active = Object.entries(filters).filter(([, v]) => v);
@@ -49,7 +50,7 @@ export default function FilterPanel({
     <div className="border border-rule/15 bg-paper shadow-card">
       <div className="flex items-center justify-between border-b border-rule/15 px-5 py-4">
         <h2 className="font-mono text-[11px] uppercase tracking-wider2 text-navy">
-          Filter intelligence
+          Filter records
         </h2>
         <span className="font-mono text-[11px] text-charcoal/55">
           <span className="text-gold">{resultCount}</span> shown
@@ -99,7 +100,8 @@ export default function FilterPanel({
           <Select label="Risk level" value={filters.risk} onChange={(v) => setFilter("risk", v)} options={risks} />
           <Select label="Sector" value={filters.sector} onChange={(v) => setFilter("sector", v)} options={sectors} />
           <Select label="Source type" value={filters.source} onChange={(v) => setFilter("source", v)} options={sources} />
-          <Select label="Status" value={filters.status} onChange={(v) => setFilter("status", v)} options={statuses} />
+          <Select label="Status (lifecycle)" value={filters.status} onChange={(v) => setFilter("status", v)} options={statuses} />
+          <Select label="Verification" value={filters.verification} onChange={(v) => setFilter("verification", v)} options={verifications} />
         </div>
       </div>
     </div>

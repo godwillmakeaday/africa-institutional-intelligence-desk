@@ -10,6 +10,7 @@ import NigeriaDesk from "./pages/NigeriaDesk.jsx";
 import Library from "./pages/Library.jsx";
 import Methodology from "./pages/Methodology.jsx";
 import BriefingDesk from "./pages/BriefingDesk.jsx";
+import Alerts from "./pages/Alerts.jsx";
 import AccessModel from "./pages/AccessModel.jsx";
 import BriefDetail from "./pages/BriefDetail.jsx";
 import About from "./pages/About.jsx";
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/library" element={<Library />} />
           <Route path="/methodology" element={<Methodology />} />
           <Route path="/briefing-desk" element={<BriefingDesk />} />
+          <Route path="/alerts" element={<Alerts />} />
           <Route path="/access-model" element={<AccessModel />} />
           <Route path="/brief/:slug" element={<BriefDetail />} />
           <Route path="/about" element={<About />} />

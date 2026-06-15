@@ -1,5 +1,5 @@
 // =============================================================================
-// Africa Institutional Intelligence Desk — Sample Data Layer
+// Africa Record Desk — Sample Record Layer
 //
 // EVERY record below is SAMPLE / DEMONSTRATION DATA.
 // It is illustrative only. It is NOT real, current, or verified intelligence,
@@ -24,7 +24,10 @@ export const CATEGORIES = [
 
 export const RISK_LEVELS = ["Low", "Medium", "High", "Strategic"];
 
-export const STATUSES = ["Verified", "Monitoring", "Developing", "Archived"];
+// Status = event lifecycle. Verification = trust in the record. Kept distinct.
+export const STATUSES = ["Developing", "Active", "Closed"];
+
+export const VERIFICATION_STATES = ["Verified", "Source-confirmed", "Unverified"];
 
 export const SOURCE_TYPES = [
   "Official Gazette",
@@ -149,7 +152,7 @@ export const nigeriaDeskAreas = [
 
 export const intelligenceItems = [
   {
-    id: "AIID-2026-0142",
+    id: "ARD-2026-0142",
     title:
       "Nasarawa State gazettes revised Land Use Charge schedule for commercial corridors",
     slug: "nasarawa-land-use-charge-revision",
@@ -160,7 +163,8 @@ export const intelligenceItems = [
     sourceType: "Official Gazette",
     date: "2026-06-09",
     riskLevel: "Medium",
-    status: "Verified",
+    status: "Active",
+    verification: "Verified",
     summary:
       "A revised Land Use Charge schedule reclassifies several commercial corridors in Lafia and Karu into higher valuation bands, with phased commencement over two assessment cycles.",
     whyItMatters:
@@ -175,7 +179,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0138",
+    id: "ARD-2026-0138",
     title:
       "Central bank circular tightens documentation for non-resident naira accounts",
     slug: "cbn-non-resident-naira-documentation",
@@ -186,7 +190,8 @@ export const intelligenceItems = [
     sourceType: "Regulatory Circular",
     date: "2026-06-07",
     riskLevel: "High",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     summary:
       "A regulatory circular introduces enhanced source-of-funds and beneficial-ownership documentation for non-resident naira accounts, with a compliance window before enforcement.",
     whyItMatters:
@@ -201,7 +206,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0131",
+    id: "ARD-2026-0131",
     title:
       "Appellate panel reserves judgment in disputed state revenue-sharing suit",
     slug: "appellate-revenue-sharing-judgment-reserved",
@@ -213,6 +218,7 @@ export const intelligenceItems = [
     date: "2026-06-05",
     riskLevel: "Strategic",
     status: "Developing",
+    verification: "Source-confirmed",
     summary:
       "An appellate panel has reserved judgment in a dispute over the formula for sharing a category of internally generated revenue between a state and its local governments.",
     whyItMatters:
@@ -227,7 +233,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0127",
+    id: "ARD-2026-0127",
     title:
       "Federal ministry republishes a stalled road contract for re-tender",
     slug: "ministry-road-contract-retender",
@@ -238,7 +244,8 @@ export const intelligenceItems = [
     sourceType: "Procurement Portal",
     date: "2026-06-04",
     riskLevel: "Medium",
-    status: "Verified",
+    status: "Active",
+    verification: "Verified",
     summary:
       "A previously awarded road rehabilitation contract has been republished for re-tender after the original engagement lapsed, with a revised scope and shortened bid window.",
     whyItMatters:
@@ -253,7 +260,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0119",
+    id: "ARD-2026-0119",
     title:
       "Revenue authority signals shift to digital filing for a category of excise returns",
     slug: "revenue-authority-digital-excise-filing",
@@ -264,7 +271,8 @@ export const intelligenceItems = [
     sourceType: "Ministry Announcement",
     date: "2026-05-30",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     summary:
       "A revenue authority announcement indicates that a category of excise returns will move to mandatory digital filing, with a parallel-run period before paper filing is retired.",
     whyItMatters:
@@ -279,7 +287,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0114",
+    id: "ARD-2026-0114",
     title:
       "Customs bulletin revises classification for a band of imported components",
     slug: "customs-classification-revision-components",
@@ -291,6 +299,7 @@ export const intelligenceItems = [
     date: "2026-05-28",
     riskLevel: "High",
     status: "Developing",
+    verification: "Source-confirmed",
     summary:
       "A customs bulletin reclassifies a band of imported industrial components under a different tariff heading, changing the applicable duty rate and documentation requirements.",
     whyItMatters:
@@ -305,7 +314,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0108",
+    id: "ARD-2026-0108",
     title:
       "Regulator opens consultation on grid-connection rules for embedded generation",
     slug: "grid-connection-embedded-generation-consultation",
@@ -316,7 +325,8 @@ export const intelligenceItems = [
     sourceType: "Regulatory Circular",
     date: "2026-05-24",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     summary:
       "An energy regulator has opened a public consultation on revised grid-connection rules for embedded and captive generation, with a defined window for written submissions.",
     whyItMatters:
@@ -331,7 +341,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0103",
+    id: "ARD-2026-0103",
     title:
       "Electoral body publishes revised constituency delimitation timetable",
     slug: "electoral-delimitation-timetable",
@@ -343,6 +353,7 @@ export const intelligenceItems = [
     date: "2026-05-20",
     riskLevel: "Strategic",
     status: "Developing",
+    verification: "Source-confirmed",
     summary:
       "An electoral body has published a revised timetable for a constituency delimitation exercise, with stakeholder engagement phases ahead of any boundary changes.",
     whyItMatters:
@@ -357,7 +368,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0098",
+    id: "ARD-2026-0098",
     title:
       "Registry flags a wave of director changes across dormant special-purpose entities",
     slug: "registry-director-changes-spv-wave",
@@ -368,7 +379,8 @@ export const intelligenceItems = [
     sourceType: "Company Registry",
     date: "2026-05-18",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     summary:
       "A pattern of director and shareholding changes has been observed across a cluster of previously dormant special-purpose entities filed within a short window.",
     whyItMatters:
@@ -383,7 +395,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0091",
+    id: "ARD-2026-0091",
     title:
       "State security advisory updates movement guidance on a trade-route segment",
     slug: "security-advisory-trade-route-segment",
@@ -395,6 +407,7 @@ export const intelligenceItems = [
     date: "2026-05-15",
     riskLevel: "High",
     status: "Developing",
+    verification: "Unverified",
     summary:
       "An updated advisory revises movement and convoy guidance on a segment of a regional trade route, citing changed conditions along the corridor.",
     whyItMatters:
@@ -409,7 +422,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0085",
+    id: "ARD-2026-0085",
     title:
       "Commodity board signals revised grading standard for a major export crop",
     slug: "commodity-board-grading-standard-revision",
@@ -420,7 +433,8 @@ export const intelligenceItems = [
     sourceType: "Ministry Announcement",
     date: "2026-05-12",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     summary:
       "A commodity board has signalled a revised grading standard for a major export crop, with an adjustment period before the new standard governs procurement.",
     whyItMatters:
@@ -435,7 +449,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0079",
+    id: "ARD-2026-0079",
     title:
       "Sub-national budget reallocates capital lines toward a water-infrastructure programme",
     slug: "subnational-budget-water-infrastructure-reallocation",
@@ -446,7 +460,8 @@ export const intelligenceItems = [
     sourceType: "Budget Document",
     date: "2026-05-08",
     riskLevel: "Low",
-    status: "Verified",
+    status: "Closed",
+    verification: "Verified",
     summary:
       "A supplementary appropriation reallocates capital lines toward a water-infrastructure programme, shifting the near-term project pipeline within the state.",
     whyItMatters:
@@ -461,7 +476,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0072",
+    id: "ARD-2026-0072",
     title:
       "Competition authority opens market inquiry into a logistics segment",
     slug: "competition-authority-logistics-market-inquiry",
@@ -473,6 +488,7 @@ export const intelligenceItems = [
     date: "2026-05-04",
     riskLevel: "High",
     status: "Developing",
+    verification: "Source-confirmed",
     summary:
       "A competition authority has opened a market inquiry into pricing and access conditions within a logistics segment, inviting submissions from affected participants.",
     whyItMatters:
@@ -487,7 +503,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-2026-0066",
+    id: "ARD-2026-0066",
     title:
       "Lands bureau publishes a notice of revocation over a disputed allocation block",
     slug: "lands-bureau-revocation-disputed-block",
@@ -498,7 +514,8 @@ export const intelligenceItems = [
     sourceType: "Official Gazette",
     date: "2026-04-29",
     riskLevel: "Strategic",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     summary:
       "A lands bureau has published a notice of revocation affecting a block of allocations described as disputed, with a stated period for affected parties to respond.",
     whyItMatters:
@@ -517,7 +534,7 @@ export const intelligenceItems = [
   // Sample intelligence structure. Demonstration briefs only.
   // Data source to be connected.
   {
-    id: "AIID-NG-2026-0048",
+    id: "ARD-NG-2026-0048",
     title:
       "Lagos signals phased rollout of a unified digital tax-payment reference",
     slug: "lagos-unified-tax-payment-reference",
@@ -529,7 +546,8 @@ export const intelligenceItems = [
     sourceType: "Ministry Announcement",
     date: "2026-06-11",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     desk: "Nigeria",
     summary:
       "Demonstration brief: Lagos State signals a phased rollout of a unified digital tax-payment reference across selected revenue lines, with a transition period before manual references are retired.",
@@ -545,7 +563,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-NG-2026-0046",
+    id: "ARD-NG-2026-0046",
     title:
       "FCT land administration signals revised documentation for title regularization",
     slug: "fct-title-regularization-documentation",
@@ -558,6 +576,7 @@ export const intelligenceItems = [
     date: "2026-06-10",
     riskLevel: "High",
     status: "Developing",
+    verification: "Source-confirmed",
     desk: "Nigeria",
     summary:
       "Demonstration brief: FCT land administration signals revised documentation requirements for a title-regularization exercise, with a stated window for affected holders to respond.",
@@ -573,7 +592,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-NG-2026-0043",
+    id: "ARD-NG-2026-0043",
     title:
       "Nasarawa publishes a demonstration tender batch for rural feeder roads",
     slug: "nasarawa-feeder-roads-tender-batch",
@@ -585,7 +604,8 @@ export const intelligenceItems = [
     sourceType: "Procurement Portal",
     date: "2026-06-08",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     desk: "Nigeria",
     summary:
       "Demonstration brief: a batch of rural feeder-road tenders is published with a defined bid window, illustrating how the Nasarawa procurement stream would be tracked.",
@@ -601,7 +621,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-NG-2026-0041",
+    id: "ARD-NG-2026-0041",
     title:
       "Kano trade-corridor brief illustrates monitoring of a major commodity route",
     slug: "kano-trade-corridor-monitoring",
@@ -613,7 +633,8 @@ export const intelligenceItems = [
     sourceType: "Trade Bulletin",
     date: "2026-06-06",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     desk: "Nigeria",
     summary:
       "Demonstration brief: a sample structure for tracking movement, levies, and conditions along a major commodity corridor running through the Kano trade hub.",
@@ -629,7 +650,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-NG-2026-0039",
+    id: "ARD-NG-2026-0039",
     title:
       "Rivers infrastructure brief tracks a power and access programme around Port Harcourt",
     slug: "rivers-power-access-programme",
@@ -641,7 +662,8 @@ export const intelligenceItems = [
     sourceType: "Budget Document",
     date: "2026-06-03",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     desk: "Nigeria",
     summary:
       "Demonstration brief: a sample structure for tracking capital allocations to power and access infrastructure around Port Harcourt across an appropriation cycle.",
@@ -657,7 +679,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-NG-2026-0037",
+    id: "ARD-NG-2026-0037",
     title:
       "Kaduna governance brief illustrates structured monitoring of movement advisories",
     slug: "kaduna-movement-advisory-monitoring",
@@ -670,6 +692,7 @@ export const intelligenceItems = [
     date: "2026-06-01",
     riskLevel: "High",
     status: "Developing",
+    verification: "Unverified",
     desk: "Nigeria",
     summary:
       "Demonstration brief: a sample structure for tracking movement advisories and governance signals across selected Kaduna corridors.",
@@ -685,7 +708,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-NG-2026-0034",
+    id: "ARD-NG-2026-0034",
     title:
       "Plateau commodities brief tracks a highland grading and aggregation pilot",
     slug: "plateau-grading-aggregation-pilot",
@@ -697,7 +720,8 @@ export const intelligenceItems = [
     sourceType: "Ministry Announcement",
     date: "2026-05-27",
     riskLevel: "Low",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     desk: "Nigeria",
     summary:
       "Demonstration brief: a sample structure for tracking a grading and aggregation pilot for highland produce in Plateau, with an adjustment period before standards govern procurement.",
@@ -713,7 +737,7 @@ export const intelligenceItems = [
     isSampleData: true,
   },
   {
-    id: "AIID-NG-2026-0031",
+    id: "ARD-NG-2026-0031",
     title:
       "Ogun corporate brief illustrates registry-signal tracking across industrial estates",
     slug: "ogun-registry-signal-tracking",
@@ -725,7 +749,8 @@ export const intelligenceItems = [
     sourceType: "Company Registry",
     date: "2026-05-23",
     riskLevel: "Medium",
-    status: "Monitoring",
+    status: "Active",
+    verification: "Source-confirmed",
     desk: "Nigeria",
     summary:
       "Demonstration brief: a sample structure for tracking incorporations and director changes across Ogun's industrial estates as a counterparty due-diligence signal.",
@@ -924,52 +949,47 @@ export const packages = [
   },
 ];
 
-// ------- Methodology steps ---------------------------------------------------
+// ------- Methodology steps — how a public record becomes a brief ------------
 export const methodologySteps = [
   {
     n: "01",
-    title: "Source Collection",
-    body: "We gather public and lawfully available information: gazettes, court lists, regulatory circulars, procurement notices, budgets, registries, and ministry publications. We record where each item came from.",
+    title: "Source identification",
+    body: "We locate the public-facing record at its origin — a gazette, notice, circular, cause list, portal, registry, or budget — and record where it sits, so the brief always points back to the source.",
   },
   {
     n: "02",
-    title: "Verification",
-    body: "Each item is checked against its originating source before classification. Where an item cannot be verified, it is labelled as developing or monitoring rather than presented as settled.",
+    title: "Source-type classification",
+    body: "Each record is assigned a source type from a fixed vocabulary, so a gazette is read as a gazette and a procurement notice as a procurement notice — and comparable records are organised in comparable ways.",
   },
   {
     n: "03",
-    title: "Classification",
-    body: "Items are assigned a category, jurisdiction, and source type using a consistent taxonomy, so that comparable signals are organised in comparable ways.",
+    title: "Jurisdiction mapping",
+    body: "We map the record to its country, region or state, and the level of authority involved — distinguishing federal, sub-national, and sectoral jurisdictions. The jurisdiction value is preserved in full.",
   },
   {
     n: "04",
-    title: "Risk Labelling",
-    body: "We assign a risk level — Low, Medium, High, or Strategic — reflecting potential institutional impact and consequence, not sentiment. The label is a prompt for attention, not a prediction.",
+    title: "Sector tagging",
+    body: "We tag the sectors the record bears on — finance, construction, land, energy, logistics, and others — so professionals can filter to the signals that touch their work.",
   },
   {
     n: "05",
-    title: "Jurisdiction Mapping",
-    body: "Each item is mapped to its country, region, and the level of authority involved, distinguishing federal, sub-national, and sectoral jurisdictions.",
+    title: "Risk labelling",
+    body: "We assign a risk level — Low, Medium, High, or Strategic — reflecting potential institutional consequence, not sentiment. The label is a prompt for attention, never a prediction.",
   },
   {
     n: "06",
-    title: "Professional Interpretation",
-    body: "We summarise what happened, why it matters, who is affected, and what a professional might reasonably consider next — without substituting our judgement for qualified advice.",
+    title: "Verification status",
+    body: "Separately from the event's lifecycle, we label trust in the record itself: Verified, Source-confirmed, or Unverified. This keeps how settled a matter is distinct from how confirmed the record is.",
   },
   {
     n: "07",
-    title: "Update Frequency",
-    body: "Developing items are revisited as their status changes. Verified items are dated, and archived items are retained for reference with their original status preserved.",
+    title: "Human review",
+    body: "Before a brief is published, a person reviews the classification, summary, and labels against the source. Where a record cannot be confirmed, it is labelled accordingly rather than presented as settled.",
   },
   {
     n: "08",
-    title: "Limitations",
-    body: "Public information is incomplete, lagging, and sometimes contradictory. Our classification reflects available information at a point in time and may change as more becomes known.",
-  },
-  {
-    n: "09",
-    title: "Ethical Use",
-    body: "We do not replace official government sources. We organise, classify, summarise, and interpret public information for professional awareness, with source transparency throughout.",
+    title: "Limits & disclaimers",
+    body: "Public information is incomplete, lagging, and sometimes contradictory. We state what a record is not, we do not replace official sources, and we do not provide legal, financial, investment, or political advice.",
   },
 ];
 

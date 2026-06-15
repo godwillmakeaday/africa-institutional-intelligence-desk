@@ -1,0 +1,12 @@
+{
+  "name": "Africa Record Desk",
+  "short_name": "Record Desk",
+  "description": "A source-mapped institutional signals platform.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A1826",
+  "theme_color": "#0A1826",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" }
+  ]
+}

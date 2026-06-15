@@ -1,13 +1,14 @@
 {
-  "name": "africa-institutional-intelligence-desk",
+  "name": "africa-record-desk",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Africa Institutional Intelligence Desk — where African public information becomes professional intelligence.",
+  "description": "Africa Record Desk \u2014 a source-mapped institutional signals platform. Organizes public-facing records into structured briefs. Nigeria-first, Africa-ready.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-server && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "build:client": "vite build"
   },
   "dependencies": {
     "react": "^18.3.1",

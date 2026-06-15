@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import RiskBadge from "../components/RiskBadge.jsx";
 import CategoryBadge from "../components/CategoryBadge.jsx";
-import { StatusBadge, SampleBadge } from "../components/Badges.jsx";
+import { StatusBadge, VerificationBadge, SampleBadge } from "../components/Badges.jsx";
 import ClassificationStrip from "../components/ClassificationStrip.jsx";
 import IntelligenceCard from "../components/IntelligenceCard.jsx";
 import { getItemBySlug, getRelatedItems } from "../data/intelligenceItems.js";
@@ -64,6 +64,7 @@ export default function BriefDetail() {
             <CategoryBadge category={item.category} className="text-parchment/80" />
             <RiskBadge level={item.riskLevel} />
             <StatusBadge status={item.status} />
+            <VerificationBadge verification={item.verification} />
           </div>
           <h1 className="mt-6 max-w-4xl font-serif text-display-l font-semibold leading-tight text-parchment">
             {item.title}
@@ -165,7 +166,8 @@ export default function BriefDetail() {
                       ["Region", item.region],
                       ["Source type", item.sourceType],
                       ["Date filed", item.date],
-                      ["Status", item.status],
+                      ["Status (lifecycle)", item.status],
+                      ["Verification", item.verification],
                       ["Confidence", item.confidenceLevel],
                       ["Reference", item.id],
                     ].map(([k, v]) => (

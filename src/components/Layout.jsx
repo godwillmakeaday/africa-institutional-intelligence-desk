@@ -1,10 +1,13 @@
-// Sitewide thin ribbon making the demonstration status unmistakable.
+import { DEMO_MODE, DEMO_NOTICE } from "../config.js";
+
+// Sitewide thin ribbon. Driven by DEMO_MODE — switches off in one place at launch.
 export function SampleRibbon() {
+  if (!DEMO_MODE) return null;
   return (
     <div className="border-b border-gold/25 bg-ink">
       <div className="desk-container py-1.5">
         <p className="text-center font-mono text-[9.5px] uppercase tracking-wider3 text-goldhaze/80">
-          Demonstration build · all intelligence shown is sample data, not real or current information
+          {DEMO_NOTICE}
         </p>
       </div>
     </div>

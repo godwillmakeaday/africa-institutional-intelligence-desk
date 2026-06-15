@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import Seal from "./Seal.jsx";
+import { BRAND } from "../config.js";
 
 const NAV = [
-  { to: "/nigeria", label: "Nigeria Desk" },
-  { to: "/dashboard", label: "Intelligence" },
-  { to: "/library", label: "Library" },
+  { to: "/dashboard", label: "Desk" },
   { to: "/methodology", label: "Methodology" },
-  { to: "/briefing-desk", label: "Briefing Desk" },
-  { to: "/about", label: "About" },
+  { to: "/briefing-desk", label: "Briefings" },
+  { to: "/alerts", label: "Alerts" },
+  { to: "/access-model", label: "Access" },
 ];
 
-const EDITION = new Date().toLocaleDateString("en-GB", {
-  day: "2-digit",
-  month: "short",
-  year: "numeric",
-});
+function edition() {
+  return new Date().toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+}
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -40,10 +43,13 @@ export default function Header() {
       <div className="hidden border-b border-rule/30 bg-inkdeep lg:block">
         <div className="desk-container flex h-8 items-center justify-between">
           <span className="font-mono text-[10px] uppercase tracking-wider2 text-parchment/40">
-            Africa · Global South Institutional Intelligence
+            Africa · source-mapped institutional signals
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-wider2 text-parchment/40">
-            Edition · {EDITION}
+          <span
+            className="font-mono text-[10px] uppercase tracking-wider2 text-parchment/40"
+            suppressHydrationWarning
+          >
+            Edition · {edition()}
           </span>
         </div>
       </div>
@@ -58,20 +64,18 @@ export default function Header() {
         <div className="desk-container">
           <div className="flex h-[68px] items-center justify-between gap-4">
             <Link to="/" className="group flex items-center gap-3.5" onClick={() => setOpen(false)}>
-              <span className="grid h-9 w-9 place-items-center border border-gold/50 font-serif text-base text-gold transition-colors group-hover:border-gold">
-                AÏ
-              </span>
+              <Seal />
               <span className="leading-tight">
-                <span className="block font-serif text-[15.5px] font-semibold tracking-tight text-parchment">
-                  Africa Institutional Intelligence Desk
+                <span className="block font-serif text-[17px] font-semibold tracking-tight text-parchment">
+                  {BRAND.name}
                 </span>
                 <span className="hidden font-mono text-[9.5px] uppercase tracking-wider3 text-gold/70 sm:block">
-                  Where public information becomes professional intelligence
+                  Filed · classified · on the record
                 </span>
               </span>
             </Link>
 
-            <nav className="hidden items-center gap-7 xl:flex">
+            <nav className="hidden items-center gap-7 lg:flex">
               {NAV.map((n) => (
                 <NavLink key={n.to} to={n.to} className={linkClass}>
                   {n.label}
@@ -86,7 +90,7 @@ export default function Header() {
             </nav>
 
             <button
-              className="grid h-10 w-10 place-items-center border border-rule/50 text-parchment xl:hidden"
+              className="grid h-10 w-10 place-items-center border border-rule/50 text-parchment lg:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((o) => !o)}
@@ -97,7 +101,7 @@ export default function Header() {
         </div>
 
         {open && (
-          <div className="border-t border-rule/40 bg-ink xl:hidden">
+          <div className="border-t border-rule/40 bg-ink lg:hidden">
             <div className="desk-container flex flex-col py-2">
               {NAV.concat([{ to: "/contact", label: "Contact" }]).map((n) => (
                 <NavLink

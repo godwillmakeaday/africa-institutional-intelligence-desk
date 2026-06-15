@@ -37,12 +37,12 @@ const LAYERS = [
     tier: "Open",
     tierLabel: "Free · Open access",
     summary:
-      "Public links, source maps, explainers, and basic institutional literacy — the raw layer kept open and traceable.",
+      "Public links, source maps, explainers, and basic institutional literacy — kept free because the public record is not ours to sell.",
     forWhom: "Anyone seeking to locate or understand public institutional sources.",
     includes: [
       "Source maps to gazettes, court lists, registries, and portals",
       "Explainers on how to read each source type",
-      "Basic institutional literacy for non-specialists",
+      "Open by commitment — we do not own public information",
     ],
     to: "/library",
     cta: "Open the library",

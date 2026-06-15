@@ -12,12 +12,13 @@ import {
   SECTORS,
   SOURCE_TYPES,
   STATUSES,
+  VERIFICATION_STATES,
   matchesNigerianState,
 } from "../data/intelligenceItems.js";
 
 const EMPTY = {
   keyword: "", category: "", country: "", state: "", region: "",
-  risk: "", sector: "", source: "", status: "",
+  risk: "", sector: "", source: "", status: "", verification: "",
 };
 
 const RISK_ORDER = { Strategic: 0, High: 1, Medium: 2, Low: 3 };
@@ -59,6 +60,7 @@ export default function Dashboard() {
       if (filters.region && it.region !== filters.region) return false;
       if (filters.risk && it.riskLevel !== filters.risk) return false;
       if (filters.status && it.status !== filters.status) return false;
+      if (filters.verification && it.verification !== filters.verification) return false;
       if (filters.source && it.sourceType !== filters.source) return false;
       if (filters.sector && !it.affectedSectors.includes(filters.sector)) return false;
       if (kw) {
@@ -80,16 +82,16 @@ export default function Dashboard() {
 
   const taxonomies = {
     categories: CATEGORIES, countries: COUNTRIES, states: NIGERIA_STATES, regions,
-    risks: RISK_LEVELS, sectors: SECTORS, sources: SOURCE_TYPES, statuses: STATUSES,
+    risks: RISK_LEVELS, sectors: SECTORS, sources: SOURCE_TYPES, statuses: STATUSES, verifications: VERIFICATION_STATES,
   };
 
   return (
     <div>
       <PageHeader
-        eyebrow="Intelligence Dashboard"
-        title="The institutional intelligence desk"
-        intro="Every signal is classified, jurisdiction-mapped, risk-labelled, and traced to a source type. Filter the desk to your jurisdictions, sectors, and risk appetite."
-        meta={[`${intelligenceItems.length} items on file`, "Sample / demonstration data", "Multi-jurisdiction"]}
+        eyebrow="Records Desk"
+        title="The records desk"
+        intro="Every record is source-mapped, jurisdiction-mapped, risk-labelled, and verification-labelled. Filter the desk to your jurisdictions, sectors, and risk appetite."
+        meta={[`${intelligenceItems.length} records on file`, "Source-mapped", "Multi-jurisdiction"]}
       />
 
       <div className="bg-parchment">
@@ -100,7 +102,7 @@ export default function Dashboard() {
               onClick={() => setMobileOpen((o) => !o)}
               className="flex w-full items-center justify-between border border-rule/25 bg-paper px-5 py-3.5 font-mono text-[11px] uppercase tracking-wider2 text-navy"
             >
-              <span>{mobileOpen ? "Hide filters" : "Filter intelligence"}</span>
+              <span>{mobileOpen ? "Hide filters" : "Filter records"}</span>
               <span className="text-gold">{filtered.length} shown · {mobileOpen ? "▴" : "▾"}</span>
             </button>
           </div>
@@ -122,7 +124,7 @@ export default function Dashboard() {
               {/* Results bar */}
               <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-rule/15 pb-4">
                 <p className="font-mono text-[11px] uppercase tracking-wider2 text-charcoal/60">
-                  <span className="text-gold">{filtered.length}</span> intelligence item
+                  <span className="text-gold">{filtered.length}</span> record
                   {filtered.length === 1 ? "" : "s"}
                 </p>
                 <label className="flex items-center gap-2.5">
