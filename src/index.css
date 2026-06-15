@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-parchment text-charcoal font-sans antialiased;
+    background-image: radial-gradient(
+      1200px 600px at 50% -10%,
+      rgba(176, 138, 67, 0.05),
+      transparent 60%
+    );
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: #b08a43;
+    color: #fcfbf6;
+  }
+  :focus-visible {
+    outline: 2px solid #b08a43;
+    outline-offset: 2px;
+  }
+  h1, h2, h3 {
+    font-feature-settings: "ss01", "liga", "kern";
+  }
+}
+
+@layer components {
+  .desk-container {
+    @apply mx-auto w-full max-w-desk px-5 sm:px-8;
+  }
+
+  /* Monospace metadata eyebrow — the "desk" voice */
+  .eyebrow {
+    @apply font-mono text-[10.5px] font-medium uppercase tracking-wider3 text-gold;
+  }
+  .eyebrow-muted {
+    @apply font-mono text-[10.5px] font-medium uppercase tracking-wider3 text-slate-400;
+  }
+
+  /* Section index — legal § marker for true sequences/positions */
+  .section-index {
+    @apply font-mono text-[11px] uppercase tracking-wider2 text-gold;
+  }
+
+  /* Editorial standfirst beneath a headline */
+  .standfirst {
+    @apply font-serif text-lg leading-relaxed text-charcoal/80 sm:text-xl;
+  }
+
+  .classcell {
+    @apply font-mono text-[10px] uppercase tracking-[0.14em];
+  }
+
+  .rule-t {
+    @apply border-t border-rule/15;
+  }
+
+  .link-underline {
+    @apply underline decoration-gold/40 decoration-1 underline-offset-4 transition-colors hover:decoration-gold;
+  }
+
+  /* Drop cap for a single editorial lead paragraph */
+  .dropcap::first-letter {
+    @apply float-left mr-3 mt-1 font-serif text-[3.4rem] font-semibold leading-[0.78] text-gold;
+  }
+
+  /* Quiet hairline-framed panel on dark grounds */
+  .panel-dark {
+    @apply border border-rule/40 bg-white/[0.02];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reveal-on-scroll, progressive-enhancement only */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
